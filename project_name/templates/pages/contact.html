@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+    <h1>{% trans "Quick Contact" %}</h1>
+   
+   {% if formsuccess %}
+   <h2>{% trans "Thank you for your message!" %}</h2>
+   {% else %}
+   <!-- Form generated from crispt forms -->
+   <form action="{% url 'pages_contact' %}" method="post">
+        {{form|crispy}}
+        <input class="btn btn-primary" type="submit" value="Submit">
+   </form>
+   
+   <!-- Form specified explicitly -->
+    <form action="{% url 'pages_contact' %}" method="post">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        <div class="fieldWrapper">
+            <label for="id_city">{% trans "City" %}: <span class="required">*</span><span>{{ form.city.errors }}</span></label>
+            {{ form.city }}
+        </div>
+        <div class="fieldWrapper">
+            
+            <label for="id_name">{% trans "Name" %}: <span class="required">*</span> <span>{{ form.name.errors }}</span></label>
+            {{ form.name }}
+        </div>
+        <div class="fieldWrapper">
+            
+            <label for="id_sender">{% trans "Email Adress" %}: <span class="required">*</span> <span>{{ form.sender.errors }}</span></label>
+            {{ form.sender }}
+        </div>
+        <div class="fieldWrapper">
+            
+            <label for="id_telephone">{% trans "Telephone" %} <span>{{ form.telephone.errors }}</span></label>
+            {{ form.telephone }}
+        </div>
+        <div class="fieldWrapper">
+            <label for="id_comment">{% trans "Comment" %} <span>{{ form.comment.errors }}</span></label>
+            {{ form.comment }}
+        </div>
+        <div class="fieldWrapper">
+            <label for="id_cc_myself">{% trans "Send a copy to my email" %} <span>{{ form.cc_myself.errors }}</span></label>
+            {{ form.cc_myself }}
+        </div>
+        <div class="required-field pull-right">* {% trans "Required Field" %}</div>
+        <div class="clearfix"></div>
+        <input class="btn btn-primary" type="submit" value="Submit">
+    </form>
+   {% endif %}
+{% endblock %}

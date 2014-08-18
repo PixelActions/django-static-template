@@ -1,0 +1,20 @@
+#OS junk files
+[Tt]humbs.db
+*.DS_Store
+
+#Python compiled files
+*.pyc
+
+#DB
+*.db
+
+#thumb pictures
+thumbs/
+
+media/
+
+#pycharm IDE
+.idea/
+
+#Settings are sensitive. Shouldn't be added to the repo. Keep them local
+fabsettings.py
