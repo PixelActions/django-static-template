@@ -50,5 +50,3 @@ class TermsView(TemplateView):
     template_name = "pages/terms.html"
 class DisclaimerView(TemplateView):
     template_name = "pages/disclaimer.html"
-class ListYourPropertyView(TemplateView):
-    template_name = "pages/list_your_property.html"
